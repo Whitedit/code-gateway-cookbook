@@ -1,0 +1,51 @@
+# Example image generation spec for CodeGateway.
+# Run with:
+#   python3 generate.py --spec spec-example.yaml --api-key $CODEGATEWAY_PROD_API_KEY
+# Dry-run (no API calls, just cost estimate):
+#   python3 generate.py --spec spec-example.yaml --dry-run --api-key dummy
+#
+# Total estimated cost: ~$0.16 (1 hero + 1 concept + 1 infographic + 1 OpenAI ui mockup)
+
+# 1) Hero — wide 16:9 horizontal (OpenAI route only)
+- name: blog-hero
+  model: gpt-image-2
+  quality: medium
+  size: "1536x1024"
+  prompt: |
+    A wide cinematic flat editorial illustration of a developer's modern workspace,
+    laptop open with terminal showing a connection error, soft purple gradient
+    background from deep violet to lavender, clean modern tech aesthetic,
+    no text, no logos, professional editorial composition.
+  out: /tmp/images/blog-hero.png
+
+# 2) Concept illustration — cheapest, photorealistic / minimal
+- name: concept-illustration
+  model: imagen-4.0-fast-generate-001
+  aspect: "1:1"
+  prompt: |
+    A minimal abstract architecture diagram with three layered horizontal bands,
+    soft purple-to-violet gradient, no text, clean editorial style.
+  out: /tmp/images/concept.png
+
+# 3) Infographic with text labels — Gemini's strength
+- name: infographic
+  model: gemini-2.5-flash-image
+  aspect: "1:1"
+  prompt: |
+    A clean three-step infographic on white background:
+    Step 1 "Sign up" with envelope icon,
+    Step 2 "Create API key" with key icon,
+    Step 3 "Run script" with terminal icon,
+    purple connecting arrows, modern minimal flat design.
+  out: /tmp/images/infographic.png
+
+# 4) UI mockup — OpenAI's strength
+- name: ui-mockup
+  model: gpt-image-2
+  quality: medium
+  size: "1024x1024"
+  prompt: |
+    A clean mockup of a developer dashboard card showing API usage stats:
+    "Total Tokens" header, a number "1,234,567", a small bar chart trend line,
+    rounded corners, soft shadow, dark mode with purple accent.
+  out: /tmp/images/ui-mockup.png
