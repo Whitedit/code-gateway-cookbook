@@ -1,0 +1,5 @@
+{
+  "inferenceProvider": "gateway",
+  "inferenceGatewayBaseUrl": "https://api.codegateway.dev",
+  "inferenceGatewayApiKey": "sk-cg-xxxxxxxxxxxxxxxx"
+}

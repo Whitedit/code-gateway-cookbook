@@ -1,0 +1,14 @@
+# ~/.codex/config.toml
+# Copy to ~/.codex/config.toml and edit. Secrets do NOT belong here — they live in
+# ~/.codex/auth.json or in the environment variable named by env_key.
+
+model = "gpt-5.4"
+
+[model_providers.codegateway]
+name = "CodeGateway"
+base_url = "https://api.codegateway.dev/v1"
+env_key = "OPENAI_API_KEY"
+
+[mcp_servers.example]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-brave-search"]
